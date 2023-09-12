@@ -16,15 +16,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 
-with open('secret.json') as f:
-    secret = json.loads(f.read())
+# with open('secret.json') as f:
+#     secret = json.loads(f.read())
 
-def get_secret(secret_name, secrets=secret):
-    try:
-        return secrets[secret_name]
-    except:
-        msg = 'la variable %s no existe' % secret_name
-        raise ImproperlyConfigured(msg)
+# def get_secret(secret_name, secrets=secret):
+#     try:
+#         return secrets[secret_name]
+#     except:
+#         msg = 'la variable %s no existe' % secret_name
+#         raise ImproperlyConfigured(msg)
 
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -86,14 +86,14 @@ WSGI_APPLICATION = 'mac_back.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': get_secret('DB_NAME'),
-        'USER': get_secret('USER'),
-        'PASSWORD': get_secret('PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': get_secret('DB_NAME'),
+    #     'USER': get_secret('USER'),
+    #     'PASSWORD': get_secret('PASSWORD'),
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # }
 }
 
 database_url = os.environ.get('DATABASE_URL')
