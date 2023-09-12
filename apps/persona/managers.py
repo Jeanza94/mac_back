@@ -5,5 +5,8 @@ class PersonaManger(models.Manager):
     def get_all_persons(self):
         return self.all()
     
-    def get_persons_by_document_number(self, document_number):
-        return self.filter(document_number=document_number)
+    def get_persons_by_document(self, document_type, document_number):
+        return self.filter(
+            document_type = document_type,
+            document_number=document_number,
+        )
