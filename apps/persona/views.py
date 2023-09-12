@@ -12,8 +12,13 @@ class PersonaView(viewsets.ModelViewSet):
     
     def get_queryset(self):
         
+        search = self.request.query_params.get('search') 
         document_number = self.request.query_params.get('document_number')
         document_type = self.request.query_params.get('document_type')
+
+        if search:
+            return Persona.objects.get_persons_by_search(search)
+
         if document_number != None and document_number.isnumeric() and document_type != None and document_type.isnumeric():
             return Persona.objects.get_persons_by_document(document_type, document_number)
             
