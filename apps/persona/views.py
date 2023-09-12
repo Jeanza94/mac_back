@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.status import HTTP_400_BAD_REQUEST
 from .models import Persona
 from .serializers import PersonaSerializer
 
@@ -7,4 +9,12 @@ from .serializers import PersonaSerializer
 # Create your views here.
 class PersonaView(viewsets.ModelViewSet):
     serializer_class = PersonaSerializer
-    queryset = Persona.objects.all()
+    
+    def get_queryset(self):
+        
+        document_number = self.request.query_params.get('document_number')
+        if document_number != None and document_number.isnumeric():
+            return Persona.objects.get_persons_by_document_number(document_number)
+            
+        return Persona.objects.get_all_persons()
+         

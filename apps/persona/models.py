@@ -1,4 +1,5 @@
 from django.db import models
+from .managers import PersonaManger
 
 class Persona(models.Model):
 
@@ -34,6 +35,8 @@ class Persona(models.Model):
     status = models.CharField('Estado civíl', max_length=1, choices= STATUS_CHOICES)
     document_type= models.CharField('Tipo de documento', max_length=1, choices=DOCUMENT_TYPES_CHOICES, null=True)
     document_number = models.IntegerField('Número del documento', null=True)
+
+    objects = PersonaManger()
 
     class Meta:
         verbose_name = 'Persona'
