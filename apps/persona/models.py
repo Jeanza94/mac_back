@@ -34,7 +34,7 @@ class Persona(models.Model):
     gender = models.CharField('Genero', max_length=1, choices=GENDER_CHOICES)
     status = models.CharField('Estado civíl', max_length=1, choices= STATUS_CHOICES)
     document_type= models.CharField('Tipo de documento', max_length=1, choices=DOCUMENT_TYPES_CHOICES, null=True)
-    document_number = models.IntegerField('Número del documento', null=True)
+    document_number = models.IntegerField('Número del documento', null=True, unique=True)
 
     objects = PersonaManger()
 

@@ -6,5 +6,4 @@ class PersonaManger(models.Manager):
         return self.all()
     
     def get_persons_by_document_number(self, document_number):
-        print(int(document_number))
         return self.filter(document_number=document_number)
