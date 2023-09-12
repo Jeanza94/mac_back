@@ -20,9 +20,9 @@ class Persona(models.Model):
         ('1', 'Soltero'),
         ('2', 'Casado'),
         ('3', 'Unión libre'),
-        ('5', 'Separado'),
-        ('6', 'Divorciado'),
-        ('7', 'Viudo'),
+        ('4', 'Separado'),
+        ('5', 'Divorciado'),
+        ('6', 'Viudo'),
     )
 
     firstname = models.CharField('Primer nombre', max_length=50)
